@@ -21,7 +21,7 @@ nix-shell '<home-manager>' -A install
 
 ```bash
 rm -rf .config/home-manager/
-git clone https://github.com/janbuecker/dotfiles.git .config/home-manager/
+git clone https://github.com/samcrudge/dotfiles.git .config/home-manager/
 ```
 
 ### 3. Switch first generation
