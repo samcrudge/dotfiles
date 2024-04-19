@@ -238,25 +238,4 @@ in {
       ${builtins.readFile ./secrets/zsh/scripts.sh}
     '';
   };
-
-  home.file = {
-    ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink ./apps/nvim;
-    ".ssh/allowed_signers".text = ''
-      j.buecker@shopware.com namespaces="git" ${
-        builtins.readFile ./apps/ssh/id_ed25519.pub
-      }'';
-
-    # secrets
-    "intelephense/licence.txt".source =
-      config.lib.file.mkOutOfStoreSymlink ./secrets/intelephense.txt;
-    ".config/wezterm".source =
-      config.lib.file.mkOutOfStoreSymlink ./apps/wezterm;
-    ".aws/config".source =
-      config.lib.file.mkOutOfStoreSymlink ./secrets/aws/config;
-    ".aws/credentials".source =
-      config.lib.file.mkOutOfStoreSymlink ./secrets/aws/credentials;
-    ".ssh/config".source =
-      config.lib.file.mkOutOfStoreSymlink ./secrets/ssh/config;
-    ".netrc".source = config.lib.file.mkOutOfStoreSymlink ./secrets/netrc;
-  };
 }
