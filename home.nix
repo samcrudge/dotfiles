@@ -36,8 +36,8 @@ let
     };
   };
 in {
-  home.username = "jbuecker";
-  home.homeDirectory = "/Users/jbuecker";
+  home.username = "sam";
+  home.homeDirectory = "/Users/sam";
   home.stateVersion = "23.11";
   home.sessionVariables = { EDITOR = "nvim"; };
   manual.manpages.enable = false;
@@ -135,11 +135,11 @@ in {
     enable = true;
 
     signing.key =
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJlKV62/B496z2BR02s2HKI62QlDaPeXCbyDrs2TWODw";
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKBEifC1XsdicwjoNw/zCfOJvazsl2Qjptnev377sh6J s.crudge@shopware.com";
     signing.signByDefault = true;
 
-    userEmail = "j.buecker@shopware.com";
-    userName = "Jan Bücker";
+    userEmail = "s.crudge@shopware.com";
+    userName = "Sam Crudge";
 
     aliases = {
       rs = "restore --staged";
@@ -230,12 +230,10 @@ in {
     initExtra = ''
       # 1password
       eval "$(op completion zsh)"; compdef _op op
-
-      # custom scripts
-      ${builtins.readFile ./apps/zsh/scripts.sh}
-
-      # custom secret scripts
-      ${builtins.readFile ./secrets/zsh/scripts.sh}
     '';
   };
+  home.file = {
+    ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink ./apps/nvim;
+  };
 }
+
